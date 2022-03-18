@@ -1,0 +1,45 @@
+
+//************ For creating database ********************** 
+use assignment
+
+
+//************ For creating collection **********************
+db.createCollection("users")     
+
+
+// ***************** For inserting documents into users collection *****************
+db.users.insertMany([
+{first_name:"Elon",last_name:"Musk",email:"elonmusk@gmail.com",gender:"Male",id_address:"123",age : 25},{first_name:"Jeff",last_name:"Bezos",email:"jeffbezos@gmail.com",gender:"Male",id_address:"456",age : 54},{first_name:"Bernard",last_name:"Arnault",email:"bernardarnault@gmail.com",gender:"Male",id_address:"753",age : 35},
+{first_name:"Julia",last_name:"Koch",email:"julia koch@gmail.com",gender:"Female",id_address:"951",age : 32},
+{first_name:"Michael",last_name:"Dell",email:"michael dell@gmail.com",gender:"Male",id_address:"486", age : 26},
+{first_name:"MacKenzie",last_name:"Scott",email:"mackenziescott@gmail.com",gender:"Female",id_address:"888",age : 27},
+{first_name:"John",last_name:"Mars",email:"john mars@gmail.com",gender:"Male",id_address:"778",age : 38},
+{first_name:"Gina",last_name:"Rinehart",email:"gina rinehart@gmail.com",gender:"Female",id_address:"335",age : 43},
+{first_name:"Miriam",last_name:"Adelson",email:"miriam adelson@gmail.com",gender:"Female",id_address:"665",age : 39},{first_name:"Susanne",last_name:"Klatten",email:"susanne klatten@gmail.com",gender:"Female",id_address:"943",age : 47}
+])
+
+
+// *************** For showing all documents of users collection *************** 
+db.users.find({}).pretty()
+
+
+// ************* For showing only one document of users collection ***************
+db.users.findOne({first_name : "John"})
+
+
+// ************* For updating document of users collection *******************
+db.users.update({first_name : "John"},{$set : {city : "Banglore"}})
+db.users.update({first_name : "Susanne"},{$set : {city : "Mumbai"}})
+db.users.update({first_name : "Gina"},{$set : {city : "Hydrabad"}})
+
+
+// ************* For deleting one document of users collection **********
+db.users.deleteOne({first_name : "Susanne"})
+
+
+// ************ For deleting multiple document of users collection **********
+db.users.deleteMany({first_name : {$in : ["Elon","Jeff","Bernard","Julia","Michael","MacKenzie","John","Gina","Miriam","Susanne"]}})
+
+
+// ************** For deleting the database ******************
+db.dropDatabase()
